@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AndroiArchitectureComponent</string>
+    <string name="age">Age</string>
+    <string name="add">Add</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="present_today">Present Today</string>
+    <string name="name">Name</string>
+    <string name="display_name">Name : </string>
+    <string name="display_age">Age : </string>
+    <string-array name="navigation_drawer_items_array">
+        <item>Display</item>
+        <item>Add</item>
+        <item>Fixtures</item>
+    </string-array>
+</resources>
