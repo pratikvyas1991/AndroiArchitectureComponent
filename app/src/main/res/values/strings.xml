@@ -5,11 +5,22 @@
     <string name="no_data_found">No Data Found</string>
     <string name="present_today">Present Today</string>
     <string name="name">Name</string>
+    <string name="project_name">Name of the project</string>
     <string name="display_name">Name : </string>
     <string name="display_age">Age : </string>
+    <string name="google_maps_api_key">AIzaSyAFIAsRjcowHsPr41g4t0w7dUATbvbqG94</string>
+    <string name="marker_title">Ahmedabad</string>
+    <string name="loading_projects">Loading Projects</string>
+    <string name="google_github_projects">Google GitHub Projects</string>
+    <string name="project_list">Project List</string>
+    <string name="project_language">Project Language</string>
+    <string name="project_watchers">Project Watchers</string>
+    <string name="watchers">Watchers: %s</string>
+    <string name="languages">Languages: %s</string>
     <string-array name="navigation_drawer_items_array">
         <item>Display</item>
         <item>Add</item>
-        <item>Fixtures</item>
+        <item>Map</item>
+        <item>Heros</item>
     </string-array>
 </resources>

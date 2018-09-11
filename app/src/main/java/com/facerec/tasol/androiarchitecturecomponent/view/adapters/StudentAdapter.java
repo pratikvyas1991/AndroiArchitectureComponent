@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facerec.tasol.androiarchitecturecomponent.R;
 import com.facerec.tasol.androiarchitecturecomponent.model_services.model.StudentModel;
+import com.facerec.tasol.androiarchitecturecomponent.utility.widget.CountListener;
 
 import java.util.List;
 
@@ -23,9 +23,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     private final LayoutInflater mLayoutInflater;
     private List<StudentModel> mStudentList;
     private Context mContext;
+    int count = 0;
+    private CountListener mCountListener;
 
-    public StudentAdapter(Context context) {
+    public StudentAdapter(Context context,CountListener listener) {
         mContext = context;
+        this.mCountListener = listener;
         mLayoutInflater = LayoutInflater.from(mContext);
     }
 
@@ -57,9 +60,13 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    Toast.makeText(mContext," "+studentModel.getStudentName()+" is Present ",Toast.LENGTH_SHORT).show();
+                    count++;
+                    mCountListener.getCount(String.valueOf(count));
                 }else {
-                    Toast.makeText(mContext," "+studentModel.getStudentName()+" is Absent ",Toast.LENGTH_SHORT).show();
+                    if(count>0){
+                        count--;
+                        mCountListener.getCount(String.valueOf(count));
+                    }
                 }
             }
         });
@@ -83,4 +90,5 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
         mStudentList = data;
         notifyDataSetChanged();
     }
+
 }

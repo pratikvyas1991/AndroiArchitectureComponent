@@ -5,13 +5,14 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import com.facerec.tasol.androiarchitecturecomponent.model_services.model.MapModel;
 import com.facerec.tasol.androiarchitecturecomponent.model_services.model.StudentModel;
 
 /**
  * Created by tasol on 10/7/18.
  */
 
-@Database(entities = {StudentModel.class},version = 2)
+@Database(entities = {StudentModel.class,MapModel.class},version = 1)
 public abstract class StudentDatabase extends RoomDatabase {
     private static StudentDatabase instance;
     private static String DB_NAME = "student_db";
@@ -32,4 +33,5 @@ public abstract class StudentDatabase extends RoomDatabase {
     }
 
     public abstract StudentModelDao studentModel();
+    public abstract MapModelDao mapModelDao();
 }

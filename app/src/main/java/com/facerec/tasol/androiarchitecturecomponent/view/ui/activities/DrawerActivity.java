@@ -10,14 +10,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.facerec.tasol.androiarchitecturecomponent.R;
 import com.facerec.tasol.androiarchitecturecomponent.model_services.model.DataModel;
 import com.facerec.tasol.androiarchitecturecomponent.view.adapters.DrawerItemCustomAdapter;
 import com.facerec.tasol.androiarchitecturecomponent.view.ui.fragments.AddFragment;
-import com.facerec.tasol.androiarchitecturecomponent.view.ui.fragments.ConnectFragment;
 import com.facerec.tasol.androiarchitecturecomponent.view.ui.fragments.DisplayFragment;
-import com.facerec.tasol.androiarchitecturecomponent.view.ui.fragments.FixturesFragment;
+import com.facerec.tasol.androiarchitecturecomponent.view.ui.fragments.HerosFragment;
+import com.facerec.tasol.androiarchitecturecomponent.view.ui.fragments.MapFragment;
 
 /**
  * Created by tasol on 5/9/18.
@@ -32,6 +33,7 @@ public class DrawerActivity extends BaseActivity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     ActionBarDrawerToggle mDrawerToggle;
+    TextView mTvCount;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,15 @@ public class DrawerActivity extends BaseActivity {
         mNavigationDrawerItemTitles = getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mTvCount  = (TextView)findViewById(R.id.tv_count);
         setupToolbar();
 
-        DataModel[] drawerItem = new DataModel[3];
+        DataModel[] drawerItem = new DataModel[4];
 
         drawerItem[0] = new DataModel(R.drawable.ic_launcher_background, "Display");
         drawerItem[1] = new DataModel(R.drawable.ic_launcher_background, "Add");
-        drawerItem[2] = new DataModel(R.drawable.ic_launcher_background, "Fixtures");
+        drawerItem[2] = new DataModel(R.drawable.ic_launcher_background, "Map");
+        drawerItem[3] = new DataModel(R.drawable.ic_launcher_background, "Heros");
 
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.list_view_item_row, drawerItem);
         mDrawerList.setAdapter(adapter);
@@ -57,6 +61,7 @@ public class DrawerActivity extends BaseActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setupDrawerToggle();
         setFirstFragment();
+
 
 
     }
@@ -82,9 +87,11 @@ public class DrawerActivity extends BaseActivity {
                 fragment = new AddFragment();
                 break;
             case 2:
-                fragment = new FixturesFragment();
+                fragment = new MapFragment();
                 break;
-
+            case 3:
+                fragment = new HerosFragment();
+                break;
             default:
                 break;
         }
@@ -123,5 +130,8 @@ public class DrawerActivity extends BaseActivity {
         setTitle(mNavigationDrawerItemTitles[0]);
     }
 
+    public void setCount(String count){
+        mTvCount.setText(count);
+    }
 
 }

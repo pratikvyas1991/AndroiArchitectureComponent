@@ -14,7 +14,9 @@ import android.widget.TextView;
 
 import com.facerec.tasol.androiarchitecturecomponent.R;
 import com.facerec.tasol.androiarchitecturecomponent.model_services.model.StudentModel;
+import com.facerec.tasol.androiarchitecturecomponent.utility.widget.CountListener;
 import com.facerec.tasol.androiarchitecturecomponent.view.adapters.StudentAdapter;
+import com.facerec.tasol.androiarchitecturecomponent.view.ui.activities.DrawerActivity;
 import com.facerec.tasol.androiarchitecturecomponent.viewmodel.StudentViewModel;
 
 import java.util.List;
@@ -29,6 +31,7 @@ public class DisplayFragment extends MasterFragment {
     private RecyclerView mRVStudents;
     private TextView mTvNoData;
     public StudentAdapter studentAdapter;
+    private CountListener countListener;
 
     public DisplayFragment() {
     }
@@ -37,8 +40,15 @@ public class DisplayFragment extends MasterFragment {
     public View fragmentView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_display, parent, false);
         svm = ViewModelProviders.of(getActivity()).get(StudentViewModel.class);
+        countListener =new CountListener() {
+            @Override
+            public void getCount(String count) {
+                ((DrawerActivity)getActivity()).setCount(count);
+                Log.v(TAG," Count MSG "+count);
+            }
+        };
         mRVStudents = (RecyclerView)view.findViewById(R.id.rv_students);
-        studentAdapter =new StudentAdapter(getActivity());
+        studentAdapter =new StudentAdapter(getActivity(),countListener);
         mRVStudents.setAdapter(studentAdapter);
         mRVStudents.setLayoutManager(new LinearLayoutManager(getActivity()));
         mTvNoData = (TextView)view.findViewById(R.id.tv_no_data);
@@ -69,5 +79,6 @@ public class DisplayFragment extends MasterFragment {
             });
         }
     }
+
 
 }
