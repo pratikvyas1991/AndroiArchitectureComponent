@@ -10,7 +10,7 @@
 
     <style name="ContentText">
         <item name="android:textSize">@dimen/student_name_textsize</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/student_name_textcolor</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/student_name_marginTop</item>
     </style>
