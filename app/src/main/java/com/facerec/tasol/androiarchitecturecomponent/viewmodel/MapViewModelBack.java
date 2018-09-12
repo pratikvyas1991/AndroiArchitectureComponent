@@ -9,7 +9,6 @@ import android.util.Log;
 
 import com.facerec.tasol.androiarchitecturecomponent.model_services.database.StudentDatabase;
 import com.facerec.tasol.androiarchitecturecomponent.model_services.model.MapModel;
-import com.facerec.tasol.androiarchitecturecomponent.model_services.networking.MyJsonResponseListener;
 import com.facerec.tasol.androiarchitecturecomponent.model_services.networking.Networking;
 
 import org.json.JSONObject;
@@ -23,7 +22,6 @@ import java.util.List;
 public class MapViewModelBack extends AndroidViewModel {
     private StudentDatabase mStudentDatabase;
     private static final String TAGMAPVM = "%%##MapViewModel";
-    MyJsonResponseListener myJsonResponseListener;
 
     public MapViewModelBack(Application application) {
         super(application);
@@ -37,24 +35,6 @@ public class MapViewModelBack extends AndroidViewModel {
 
     public void getMapData(Context context) {
         Networking.getMapData(context);
-    }
-
-    public void getMapDataResponse(Context context) {
-        final JSONObject[] object = {null};
-        try {
-            myJsonResponseListener =new MyJsonResponseListener() {
-                @Override
-                public void response(JSONObject jsonObject) {
-                    if(object[0] !=null){
-                        object[0] = jsonObject;
-                        Log.v(TAGMAPVM," resp : "+ object[0].toString());
-                    }
-                }
-            };
-            Networking.getMapDataResponse(context,myJsonResponseListener);
-        } catch (Exception je) {
-            je.printStackTrace();
-        }
     }
 
     public void addMapData(MapModel model) {

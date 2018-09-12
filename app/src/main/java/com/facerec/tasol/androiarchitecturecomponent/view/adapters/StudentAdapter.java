@@ -23,7 +23,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     private final LayoutInflater mLayoutInflater;
     private List<StudentModel> mStudentList;
     private Context mContext;
-    int count = 0;
+    int intAttendanceCount = 0;
     private CountListener mCountListener;
 
     public StudentAdapter(Context context,CountListener listener) {
@@ -60,12 +60,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    count++;
-                    mCountListener.getCount(String.valueOf(count));
+                    intAttendanceCount++;
+                    mCountListener.getCount(String.valueOf(intAttendanceCount));
                 }else {
-                    if(count>0){
-                        count--;
-                        mCountListener.getCount(String.valueOf(count));
+                    if(intAttendanceCount >0){
+                        intAttendanceCount--;
+                        mCountListener.getCount(String.valueOf(intAttendanceCount));
                     }
                 }
             }

@@ -19,7 +19,6 @@ import org.json.JSONObject;
 public class Networking {
     private static RequestQueue mRequestQueue;
     private static final String TAGWS = "%%%Networking ";
-    public static MyJsonResponseListener myJsonResponseListener;
 
     public static void getMapData(Context mContext) {
         if (mRequestQueue == null) {
@@ -45,32 +44,4 @@ public class Networking {
         mRequestQueue = null;
     }
 
-    public static JSONObject getMapDataResponse(Context mContext,MyJsonResponseListener listener) {
-        myJsonResponseListener = listener;
-        final JSONObject[] jsonObject = {null};
-        if (mRequestQueue == null) {
-            mRequestQueue = Volley.newRequestQueue(mContext);
-        }
-        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, NetworkingConstant.mBaseUrl, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // display response
-                        jsonObject[0] = response;
-                        myJsonResponseListener.response(response);
-                        Log.d(TAGWS,"Response :"+ response.toString());
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d(TAGWS, "Error " + error.toString());
-                    }
-                }
-        );
-        Log.d(TAGWS, "ReqObj : "+getRequest.toString());
-        mRequestQueue.add(getRequest);
-        mRequestQueue = null;
-        return jsonObject[0];
-    }
 }
