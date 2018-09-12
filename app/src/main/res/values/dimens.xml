@@ -10,7 +10,13 @@
     <dimen name="logo_height">125dp</dimen>
 
     <dimen name="student_name_textsize">17dp</dimen>
+    <dimen name="student_name_text_label_size">15dp</dimen>
     <dimen name="student_name_marginTop">5sp</dimen>
 
     <dimen name="layout_weight_70">70</dimen>
+    <dimen name="layout_weight_30">30</dimen>
+
+    <dimen name="height_item_seperator">1dp</dimen>
+
+    <dimen name="layout_padding">10sp</dimen>
 </resources>
