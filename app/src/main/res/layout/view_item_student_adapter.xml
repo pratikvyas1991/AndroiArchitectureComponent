@@ -19,12 +19,13 @@
             android:layout_height="wrap_content"
             android:textStyle="bold" />
         <TextView
-            android:layout_weight="70"
             android:id="@+id/tv_student_name"
-            android:layout_marginTop="5sp"
+            android:layout_weight="@dimen/layout_weight_70"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
+            android:text="hello"
+            style="@style/ContentText"
+            />
     </LinearLayout>
 
     <LinearLayout

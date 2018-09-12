@@ -8,4 +8,9 @@
     <dimen name="project_text">16sp</dimen>
     <dimen name="logo_width">150dp</dimen>
     <dimen name="logo_height">125dp</dimen>
+
+    <dimen name="student_name_textsize">17dp</dimen>
+    <dimen name="student_name_marginTop">5sp</dimen>
+
+    <dimen name="layout_weight_70">70</dimen>
 </resources>
