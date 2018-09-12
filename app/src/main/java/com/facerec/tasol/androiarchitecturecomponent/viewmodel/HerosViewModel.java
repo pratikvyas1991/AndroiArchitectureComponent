@@ -18,6 +18,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by tasol on 10/7/18.
+ * for headers in volley
+ * https://codesnipps.simolation.com/post/android/volley-set-headers/
  */
 
 public class HerosViewModel extends AndroidViewModel {
